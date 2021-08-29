@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Cotton Price Prediction</title>
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/material-components-web.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/chart.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+        <script src="{{ url_for('static', filename='js/FileSaver.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/chart.bundle.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/material-components-web.min.js') }}"></script> 
+    </head>
+
+    <body>
+        <header class="mdc-top-app-bar mdc-elevation--z8">
+            <div class="mdc-top-app-bar__row">
+                <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+                    <span class="mdc-top-app-bar__title">Cotton Price Prediction</span>
+                </section>
+                <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
+                    <a href="{{ url_for('index') }}" class="material-icons mdc-top-app-bar__action-item mdc-icon-button">show_chart</a>
+                    <a href="{{ url_for('about') }}" class="material-icons mdc-top-app-bar__action-item mdc-icon-button">info</a>
+                    <a href="{{ url_for('contact') }}" class="material-icons mdc-top-app-bar__action-item mdc-icon-button">perm_phone_msg</a>
+                </section>
+            </div>
+        </header>
+        
+        {% block content %} {% endblock %}
+
+        <div class="footer mdc-elevation--z8">
+
+        </div>
+
+        <script src="{{ url_for('static', filename='js/mdc-init.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/predict-form.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/graph.js') }}"></script>
+    </body>
+</html>

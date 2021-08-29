@@ -1,0 +1,181 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="hero-image">
+
+</div>
+
+<div class="mdc-layout-grid">
+    <div class="mdc-layout-grid__inner margin-top--80">
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2 only-desktop"></div>
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8">
+            <div class="mdc-card option-card mdc-elevation--z4">
+                <h4 class="mdc-typography--headline4">Find Cotton Prices</h4>
+                <hr>
+
+                <form class="predict-form" id="predict-form" action=""> 
+                    <div class="full-width flex">
+                        <div class="mdc-select mdc-select--outlined">
+                            <div class="mdc-select__anchor">
+                                <i class="mdc-select__dropdown-icon"></i>
+                                <div class="mdc-select__selected-text"></div>
+                                <div class="mdc-notched-outline">
+                                    <div class="mdc-notched-outline__leading"></div>
+                                    <div class="mdc-notched-outline__notch">
+                                        <label class="mdc-floating-label mdc-theme--primary">State</label>
+                                    </div>
+                                    <div class="mdc-notched-outline__trailing"></div>
+                                </div>
+                            </div>
+
+                            <div class="mdc-select__menu mdc-menu mdc-menu-surface">
+                                <ul class="mdc-list" id="state-list"></ul>
+                            </div>
+
+                            <p class="mdc-select-helper-text mdc-theme--error" id="state-helper-text" aria-hidden="true">Please select State</p>
+                        </div>
+                        <div class="mdc-select mdc-select--outlined">
+                            <div class="mdc-select__anchor">
+                                <i class="mdc-select__dropdown-icon"></i>
+                                <div class="mdc-select__selected-text"></div>
+                                <div class="mdc-notched-outline">
+                                    <div class="mdc-notched-outline__leading"></div>
+                                    <div class="mdc-notched-outline__notch">
+                                        <label class="mdc-floating-label mdc-theme--primary">District</label>
+                                    </div>
+                                    <div class="mdc-notched-outline__trailing"></div>
+                                </div>
+                            </div>
+
+                            <div class="mdc-select__menu mdc-menu mdc-menu-surface">
+                                <ul class="mdc-list" id="district-list"></ul>
+                            </div>
+
+                            <p class="mdc-select-helper-text mdc-theme--error" id="district-helper-text" aria-hidden="true">Please select District</p>
+                        </div>
+                        <div class="mdc-select mdc-select--outlined">
+                            <div class="mdc-select__anchor">
+                                <i class="mdc-select__dropdown-icon"></i>
+                                <div class="mdc-select__selected-text"></div>
+                                <div class="mdc-notched-outline">
+                                    <div class="mdc-notched-outline__leading"></div>
+                                    <div class="mdc-notched-outline__notch">
+                                        <label class="mdc-floating-label mdc-theme--primary">Market</label>
+                                    </div>
+                                    <div class="mdc-notched-outline__trailing"></div>
+                                </div>
+                            </div>
+
+                            <div class="mdc-select__menu mdc-menu mdc-menu-surface">
+                                <ul class="mdc-list" id="market-list"></ul>
+                            </div>
+
+                            <p class="mdc-select-helper-text mdc-theme--error" id="market-helper-text" aria-hidden="true">Please select Market</p>
+                        </div>
+                        <div class="mdc-select mdc-select--outlined">
+                            <div class="mdc-select__anchor">
+                                <i class="mdc-select__dropdown-icon"></i>
+                                <div class="mdc-select__selected-text"></div>
+                                <div class="mdc-notched-outline">
+                                    <div class="mdc-notched-outline__leading"></div>
+                                    <div class="mdc-notched-outline__notch">
+                                        <label class="mdc-floating-label mdc-theme--primary">Variety</label>
+                                    </div>
+                                    <div class="mdc-notched-outline__trailing"></div>
+                                </div>
+                            </div>
+
+                            <div class="mdc-select__menu mdc-menu mdc-menu-surface">
+                                <ul class="mdc-list" id="variety-list"> </ul>
+                            </div>
+
+                            <p class="mdc-select-helper-text mdc-theme--error" id="variety-helper-text" aria-hidden="true">Please select Variety</p>
+                        </div>
+                    </div>
+
+                    <div class="full-width flex margin-top--20">
+                        <button class="mdc-button mdc-button--outlined center" id="get-predictions">
+                            <div class="mdc-button__ripple"></div>
+                            <span class="mdc-button__label">Know Cotton Prices</span>
+                        </button>
+                    </div>
+                    
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="mdc-layout-grid__inner margin-top--60">
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2 only-desktop"></div>
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2 mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone">
+            <div class="mdc-card price-card mdc-elevation--z4">
+                <h5 class="mdc-typography--headline4">Price</h5>
+                <hr>
+
+                <div class="price-container" id="price-container">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6">
+            <div class="mdc-card graph-card mdc-elevation--z4">
+                <div class="graph-card-title full-width">
+                    <h4 class="mdc-typography--headline4">Graphs</h4>
+                    <button class="mdc-button right v-center margin-right--20" id="graph-save">
+                        <div class="mdc-button__ripple"></div>
+                        <span class="mdc-button__label material-icons">cloud_download</span>
+                    </button>
+                </div>
+                <hr>
+
+                <div class="mdc-tab-bar" role="tablist">
+                    <div class="mdc-tab-scroller">
+                        <div class="mdc-tab-scroller__scroll-area">
+                            <div class="mdc-tab-scroller__scroll-content">
+                                <button class="mdc-tab mdc-tab--active" role="tab" aria-selected="true" tabindex="0">
+                                    <span class="mdc-tab__content">
+                                        <span class="mdc-tab__text-label">One Week</span>
+                                    </span>
+                                    <span class="mdc-tab-indicator mdc-tab-indicator--active">
+                                        <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                                    </span>
+                                    <span class="mdc-tab__ripple"></span>
+                                </button>
+                                <button class="mdc-tab" role="tab" aria-selected="true" tabindex="1">
+                                    <span class="mdc-tab__content">
+                                        <span class="mdc-tab__text-label">One Month</span>
+                                    </span>
+                                    <span class="mdc-tab-indicator">
+                                        <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                                    </span>
+                                    <span class="mdc-tab__ripple"></span>
+                                </button>
+                                <button class="mdc-tab" role="tab" aria-selected="true" tabindex="1">
+                                    <span class="mdc-tab__content">
+                                        <span class="mdc-tab__text-label">Two Month</span>
+                                    </span>
+                                    <span class="mdc-tab-indicator">
+                                        <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                                    </span>
+                                    <span class="mdc-tab__ripple"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="graph">
+                    <canvas class="plot" id="price-graph"></canvas>
+                    <hr>
+                    <div class="title mdc-typography--headline6" id="graph-title">
+                        Predicted Cotton Prices for next week (in ₹)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
